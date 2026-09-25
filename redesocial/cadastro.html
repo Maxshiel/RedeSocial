@@ -1,21 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-</head>
-<body>
-    
-    <form action="cadastro">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastro</title>
+    </head>
+    <body>
 
-        <input type="text" id="usuario">
+        <div id="cadastro">
 
-        <input type="password" id="senha">
+            <form action="cadastro">
 
-        <button type="button" onclick="criarcookie()"></button>
+                <div>Usuario <input type="text" id="usuario"></div>
 
-    </form>
+                <div>Senha <input type="password" id="senha"></div>
 
-</body>
-</html>
+                <button type="button" onclick="criarCookie()">Enviar</button>
+
+            </form>
+
+        </div>
+
+        <script>
+            
+            function criarCookie(nome, valor, expira){
+
+            var usuario = document.getElementById("usuario").value
+
+            var senha = document.getElementById("senha").value
+
+            if(usuario != ""){
+
+                var expira = "Tue, 01 Jan 2115 12:00:00 GMT";
+
+                document.cookie = "usuario=" + encodeURIComponent(usuario) + "; expires=" + expira + "; path=/";
+
+                document.cookie = "senha=" + encodeURIComponent(senha) + "; expires=" + expira + "; path=/";
+
+                window.location.href = "login.html";
+                    
+                }
+
+            var dtExpira = "expires="+expira;
+            document.cookie = nome + "=" + valor + ";" + dtExpira;
+            //cookie final = nomeUsuario=nome; expires= Tue, 01 Jan 2115 120000 UTC 
+            }
+
+        </script>
+
+    </body>
+    </html>

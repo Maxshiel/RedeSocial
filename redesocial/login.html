@@ -7,11 +7,14 @@
 
 </head>
 <body>
+
+    FAÇA O LOGIN!
+
     <form action="login">
 
-        Usuario <input type="text" id="usuario">
+        Usuario <input type="text" id="usuariodig">
 
-        Senha <input type="password" id="senha">
+        Senha <input type="password" id="senhadig">
 
         <button type="button" onclick="fazerLogin()">Enviar</button>
 
@@ -24,13 +27,31 @@
     document.cookie = nome + "=" + valor + ";" + dtExpira;
     //cookie final = nomeUsuario=nome; expires= Tue, 01 Jan 2115 120000 UTC 
     }
+
+    function lerCookie(nome) {
+    var vnome = nome + "=";
+    var ca = document.cookie.split(';');
+
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i].trim();
+
+        if (c.indexOf(vnome) == 0) {
+            return c.substring(vnome.length, c.length);
+        }
+    }
+
+    return "";
+    }
     
     function fazerLogin() {
-    var usuario = document.getElementById("usuario").value;
-    var senha = document.getElementById("senha").value;
+    var usuariodig = document.getElementById("usuariodig").value;
+    var senhadig = document.getElementById("senhadig").value;
 
-    if (usuario == "admin" && senha == "1234") {
-        criarCookie("usuarioLogado", usuario, 1);
+    var usuariocasd = lerCookie("usuario");
+    var senhacasd = lerCookie("senha");
+
+    if (usuariodig == usuariocasd && senhadig == senhacasd) {
+        criarCookie("usuarioLogado", usuariodig, 1);
 
         window.location.href = "parteinicial.html";
     } else {

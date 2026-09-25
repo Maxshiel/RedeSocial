@@ -47,3 +47,9 @@ header{
     height: 300px;
     width: 300px;
 }
+
+.cadastro{
+    display: inline;
+    position: fixed;
+    justify-content: center;
+}
